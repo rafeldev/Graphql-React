@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
+import MessageList from './components/MessageList'
+import MessageForm from './components/MessageForm'
+import { Navbar } from './components/Navbar'
+
+import "bootswatch/dist/lux/bootstrap.min.css"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container p-4">
+        <Switch>
+          <Route exact path="/" component={MessageList} />
+          <Route exact path="/new-message" component={MessageForm} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
